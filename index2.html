@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/estilos.css">
+    <title>Arreglos</title>
+</head>
+
+<body>
+    <script>
+
+        const lenguajes = [
+            "JavaScript",
+            "Php",
+            "Ruby",
+            "Python",
+            "Scala",
+            "Go"
+        ]
+        for (lenguaje of lenguajes) {
+            console.log(lenguaje)
+        }
+        for (let i = 0; i < lenguajes.length; i++) {
+            console.log(lenguajes[i])
+            console.log(i)
+        }
+
+    </script>
+    <ul id="dynamic-content"> </ul>
+    <script>
+        const data = ['Javiera', 'Camila', 'Francisco', 'Jorge', 'Daniela']
+        const d = document.querySelector("#dynamic-content")
+        for (let item of data) {
+            d.innerHTML += `<li> ${item} </li>`
+        }
+    </script>
+
+    <div>
+        <h2>Escala mayor de Do:</h2>
+        <ul id="dinamic-list"></ul>
+    </div>
+
+    <script>
+        //Arreglo
+        const escalaMayorDeDo = [
+            "Do",
+            "Re",
+            "Mi",
+            "Fa",
+            "Sol",
+            "La",
+            "Si",
+        ]
+
+        let ln = document.querySelector('#dinamic-list')
+        let lista = ''
+
+        for (let nota of escalaMayorDeDo) {
+            lista += `<li> ${nota} </li>`
+        }
+        ln.innerHTML = lista
+    </script>
+    <br><br>
+    <section class="articulos"></section>
+    <script>
+        const articulo = {
+            id: 31,
+            titulo: "Autos nuevos en Chile",
+            subtitulo: "El mercado de autos se normaliza",
+            descripcion: "No es novedad que los precios de los autos usados se han disparado debido  a la falta en stock de autos nuevos, sin embargo puede que esto esté llegando a su fin…"
+        };
+        const articulosSection =
+            document.querySelector(".articulos")
+        articulosSection.innerHTML = `
+        <article class="articulo">
+        <h4>${articulo.titulo}</h4>
+        <h6>${articulo.subtitulo}</h6>
+        <p>${articulo.descripcion}</p>
+        <a href="/articulo/${articulo.id}">
+        <button>Ver más</button></a>
+        </article>
+        `;
+
+    </script>
+
+    <script>
+        //Objetos
+        let pc = {
+            marcaMonitor: "Sansung",
+            teclado: "Español",
+            sistemaOperativo: "Windows",
+            memoria: "4gb",
+            discoDuro: 400,
+            perrifericos: ["mouse", "teclado"]
+        }
+        console.log(pc.marcaMonitor);
+        console.log(pc['marcaMonitor']);
+
+        //La primera notacion no acepta espacios o caracteres especiales
+        //La segunda si
+        //Por ejemplo si discoDuro fuera "disco duro", funciona solo abajo
+    </script>
+
+    <!-- Los arreglos solo llevan los atributos
+    Los arreglos pueden llevar variables y atributos -->
+    <div id=card></div>
+    <script>
+        //Objeto desarrollador
+        const desarrollador = {
+            area: "Front End",
+            lenguajePreferido: "Javascript",
+            experiencia: 10
+        }
+        // console.log(desarrollador.lenguajePreferido);
+
+        let cardTemplate =
+            `<p>Area: ${desarrollador.area}<p>
+        <p>Lenguaje: ${desarrollador.lenguajePreferido}</p>
+        <p>Experiencia: ${desarrollador.experiencia}</p>
+        `;
+
+        const card = document.querySelector('#card')
+        card.innerHTML = cardTemplate;
+    </script>
+    <!-- kdjfh😊 (windows+.) -->
+
+    <script>
+        const producto = {
+            id: 43,
+            titulo: "Cafetera magnética",
+            precio: 23990,
+            color: "rojo",
+            src: "...", // ingresa aquí la URL de la imagen,
+            descripción: `Calienta tu café matutino con la nueva tecnología magnética`
+        };
+    </script>
+    
+    <div>
+        <select id="selector">
+        </select>
+    </div>
+    <script>
+        const elementoSelect = 
+        [
+            { id: 1,  nombre:"cosita linda" },
+            { id: 2,  nombre:"feo"},
+            { id: 3,  nombre:"regular"},
+        ]
+let listado = ''
+    for (let selecto of elementoSelect) {
+        listado += `<option value="${selecto.id}">${selecto.nombre}</option>`
+        }
+           let selector = document.querySelector('#selector')
+            selector.innerHTML = listado
+            console.log(listado)
+    </script>
+</body>
+
+</html>
