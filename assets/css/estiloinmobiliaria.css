@@ -19,9 +19,8 @@
 
 #casas{
     grid-area: casas;
-    /* display: flex;
-    min-height: 100vh;   */
 }
+
 #btnComprobar{
     width:min-content;
 }

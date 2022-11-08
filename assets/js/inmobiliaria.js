@@ -8,7 +8,7 @@ const casas =
         { imagen: "assets/img/departamento.jpg", titulo: "Departamento", cuartos: 3, metros: 200, descripcion: "Desde las alturas todo se ve mejor" },
         { imagen: "assets/img/mansion.jpg", titulo: "Mansión", cuartos: 5, metros: 500, descripcion: "Vive una vida lujosa en la mansión de tus sueños" },
     ]
-
+// function llenarTarjetas() {
 let cardCasas = ''
 for (let casa of casas) {
     let casaTemplate =
@@ -28,53 +28,29 @@ for (let casa of casas) {
         `
     cardCasas += casaTemplate
 }
+// }
 let casasResultado = document.querySelector('#casas')
 casasResultado.innerHTML = cardCasas
 
 //Condiciones
-let cuartos = Number(document.querySelector('#inputCuartos').value)
-let desde = Number(document.querySelector('#inputDesde').value)
-let hasta = Number(document.querySelector('#inputHasta').value)
+
 let botonComprobar = document.querySelector('#btnComprobar')
+botonComprobar.addEventListener('click', function() {
 
-botonComprobar.addEventListener('click', function() {comprobar (cuartos, desde, hasta)})
+    let cuartos = Number(document.querySelector('#inputCuartos').value)
+    let desde = Number(document.querySelector('#inputDesde').value)
+    let hasta = Number(document.querySelector('#inputHasta').value)
 
-  let comprobar = function(pieza,rangoInicial,rangoFinal){
-    
-    
-    // console.log(cuartos + desde + hasta)
+    if (cuartos > 0 && desde >0 && hasta > 0){
+        filtrar(cuartos,desde,hasta)
+        
+        // console.log(cuartos)
+        // console.log(desde)
+        // console.log(hasta)
 
- if (pieza === 0 && rangoInicial === 0 && rangoFinal === 0){
-    alert('Te faltan datos por completar para buscar')
-    console.log(pieza)
-    console.log(rangoInicial)
-    console.log(rangoFinal)
-}
-    else{
-        alert('Todo ok')
-        console.log(pieza)
-        console.log(rangoInicial)
-        console.log(rangoFinal)
-    }}
+    } else {
+        alert('Debes completar todos los campos para filtrar')
+    }
+});
 
-// } else if(pieza==''){
-//     alert('Te faltan datos por completar para buscar')
-// } else if(rangoInicial == '' ){
-//     alert('Te faltan datos por completar para buscar')
-// } else if(rangoFinal == '' ){
-//     alert('Te faltan datos por completar para buscar')
-// }else {
-//      alert(pieza)
-// }
-// }
-   
-
-
-// const datos = [1200, 350, 1500, 1400, 250, 5000, 1950, 1952]
-// const d = document.querySelector("#nombres")
-// for (let valor of datos){
-// if (valor > 1000 && valor < 2000){
-// d.innerHTML+= `<li> + ${item} + </li>` /* Aquí estamos interpolando */
-// }
-// }
 
