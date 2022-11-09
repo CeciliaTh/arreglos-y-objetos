@@ -83,7 +83,23 @@ const filtrarCasas = (filtroCasas = casas) => {
     casasResultadoF.innerHTML = filtradoTotal
 
 }
+
+//Reseteando los input
 btnReset = document.querySelector('#reset')
 btnReset.addEventListener('click', llenarTarjetas)
+btnReset.addEventListener('click', resetInput)
 
-llenarTarjetas()
+function resetInput() {
+
+    let cuartos2 = Number(document.querySelector('#inputCuartos').value)
+    let desde2 = Number(document.querySelector('#inputDesde').value)
+    let hasta2 = Number(document.querySelector('#inputHasta').value)
+
+    document.querySelector('#inputCuartos').value = 0
+    document.querySelector('#inputDesde').value = 0
+    document.querySelector('#inputHasta').value = 0
+    }
+
+  //Llamo a la función sin condiciones para que cargue el array
+  llenarTarjetas()
+
