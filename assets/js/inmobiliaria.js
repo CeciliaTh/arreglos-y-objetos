@@ -7,8 +7,10 @@ const casas =
         { imagen: "assets/img/casarodante.jpg", titulo: "Casa Rondante", cuartos: 1, metros: 6, descripcion: "Conviertete en un nómada del mundo sin salir de tu casa" },
         { imagen: "assets/img/departamento.jpg", titulo: "Departamento", cuartos: 3, metros: 200, descripcion: "Desde las alturas todo se ve mejor" },
         { imagen: "assets/img/mansion.jpg", titulo: "Mansión", cuartos: 5, metros: 500, descripcion: "Vive una vida lujosa en la mansión de tus sueños" },
-    ]
-// function llenarTarjetas() {
+    ];
+
+
+function llenarTarjetas() {
 let cardCasas = ''
 for (let casa of casas) {
     let casaTemplate =
@@ -28,12 +30,13 @@ for (let casa of casas) {
         `
     cardCasas += casaTemplate
 }
-// }
+
 let casasResultado = document.querySelector('#casas')
 casasResultado.innerHTML = cardCasas
+}
+
 
 //Condiciones
-
 let botonComprobar = document.querySelector('#btnComprobar')
 botonComprobar.addEventListener('click', function() {
 
@@ -42,15 +45,45 @@ botonComprobar.addEventListener('click', function() {
     let hasta = Number(document.querySelector('#inputHasta').value)
 
     if (cuartos > 0 && desde >0 && hasta > 0){
-        filtrar(cuartos,desde,hasta)
         
-        // console.log(cuartos)
-        // console.log(desde)
-        // console.log(hasta)
+        const casasFiltradas = casas.filter((filtro) => 
+            filtro.cuartos == cuartos && filtro.metros >= desde  && filtro.metros <= hasta 
+          );
+        filtrarCasas(casasFiltradas)
+        console.log(casasFiltradas)
 
     } else {
         alert('Debes completar todos los campos para filtrar')
+        llenarTarjetas()
     }
 });
 
+const filtrarCasas = (filtroCasas = casas) => {
+    let filtradoTotal = ''
+    for (let casaFiltrada of filtroCasas) {
+        let casaTemplateFiltrado = `
+        <div class="col-sm-4 p-4">
+        <div class="card shadow rounded" style="width: 18rem;">
+        <img src=${casaFiltrada.imagen} class="card-img-top" alt=${casaFiltrada.titulo}>
+        <div class="card-body bg-secondary">
+          <h5 class="card-title text-white text-center">${casaFiltrada.titulo}</h5>
+          <p class="card-text text-white"> Cuartos: ${casaFiltrada.cuartos}</p>
+          <p class="card-text text-white"> Metros: ${casaFiltrada.metros}</p>
+          <p class="card-text text-white"> ${casaFiltrada.descripcion}</p>
+          <a href="#" class="btn btn-primary">Ver Más</a>
+        </div>
+      </div>
+      </div>
+        `
+        filtradoTotal += casaTemplateFiltrado
+        console.log(filtroCasas)
+        console.log(filtradoTotal)
+    }
+    let casasResultadoF = document.querySelector('#casas')
+    casasResultadoF.innerHTML = filtradoTotal
 
+}
+btnReset = document.querySelector('#reset')
+btnReset.addEventListener('click', llenarTarjetas)
+
+llenarTarjetas()
